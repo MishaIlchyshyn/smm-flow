@@ -1,0 +1,42 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: %>
+
+  <div>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name, placeholder: "Kevin Mac" %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email, placeholder: "kevin@example.com" %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.label :agency_name, "Agency Name" %>
+    <%= f.text_field :agency_name, placeholder: "Test Agency" %>
+  </div>
+
+  <div>
+    <%= f.label :agency_timezone, "Agency Timezone" %>
+    <%= f.select :agency_timezone,
+                 ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] },
+                 { prompt: "Select Timezone" } %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>
+
+<%= render "devise/shared/links" %>
+<%= link_to "Go Home", root_path %>
