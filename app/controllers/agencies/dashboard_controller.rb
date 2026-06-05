@@ -1,5 +1,5 @@
 module Agencies
-  class DashboardController < ApplicationController
+  class DashboardController < BaseController
     def show
     end
   end
