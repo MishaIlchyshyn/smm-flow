@@ -1,7 +1,25 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  # Changes to the importmap will invalidate the etag for HTML responses
+  before_action :authenticate_user!
+  before_action :set_current_agency
+
   stale_when_importmap_changes
+
+  private
+
+  def set_current_agency
+    return unless user_signed_in?
+
+    @agency ||= current_user.agencies.order("memberships.created_at ASC").first
+
+    if @agency.nil?
+      sign_out current_user
+      redirect_to new_user_session_path, alert: "No agency found for this account. Please sign up again."
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    dashboard_path
+  end
 end
