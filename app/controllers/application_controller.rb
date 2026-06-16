@@ -4,9 +4,15 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_current_agency
 
+  helper_method :current_agency
+
   stale_when_importmap_changes
 
   private
+
+  def current_agency
+    @agency
+  end
 
   def set_current_agency
     return unless user_signed_in?

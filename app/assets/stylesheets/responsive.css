@@ -1,0 +1,19 @@
+@media (max-width: 960px) {
+  .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    display: none;
+  }
+
+  .content {
+    padding: 20px 16px 36px;
+  }
+}
