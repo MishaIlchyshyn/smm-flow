@@ -1,0 +1,41 @@
+.app {
+  display: grid;
+  grid-template-columns: var(--side-w) 1fr;
+  min-height: 100dvh;
+}
+
+.app.collapsed {
+  grid-template-columns: 0 1fr;
+}
+
+.app.collapsed .side {
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.content {
+  padding: 28px 30px 40px;
+  max-width: 1320px;
+  width: 100%;
+}
+
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.page-head h1 {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
