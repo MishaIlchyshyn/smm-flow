@@ -1,0 +1,22 @@
+<div class="page-head">
+  <h1>Profile Settings</h1>
+</div>
+
+<div class="card settings-card"
+     data-controller="tabs"
+     data-tabs-initial-value="<%= params[:tab] == 'password' ? 1 : 0 %>">
+  <div class="inner-tabs">
+    <%= render "agencies/btns/tab", label: "Base Settings", param: "" %>
+    <%= render "agencies/btns/tab", label: "Password Settings", param: "password" %>
+  </div>
+
+  <div class="settings-body">
+    <div data-tabs-target="panel">
+      <%= render "agencies/profile/forms/profile_form" %>
+    </div>
+
+    <div data-tabs-target="panel" hidden>
+      <%= render "agencies/profile/forms/profile_password_form" %>
+    </div>
+  </div>
+</div>

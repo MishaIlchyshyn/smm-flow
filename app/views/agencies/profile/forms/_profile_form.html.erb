@@ -1,0 +1,20 @@
+<%= form_with model: current_user, url: profile_path, method: :patch, class: "form-col" do |f| %>
+  <div class="avatar-row">
+    <div class="avatar lg"><%= current_user.avatar %></div>
+    <button type="button" class="btn-ghost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 9l5-5 5 5M12 4v12"/>
+      </svg>
+      Upload avatar
+    </button>
+  </div>
+  <label class="fld">
+    <span>Full Name</span>
+    <%= f.text_field :full_name %>
+  </label>
+  <label class="fld">
+    <span>Email</span>
+    <%= f.email_field :email %>
+  </label>
+  <%= render "agencies/btns/save", f: %>
+<% end %>
