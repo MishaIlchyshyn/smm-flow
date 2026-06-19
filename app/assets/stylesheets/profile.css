@@ -137,7 +137,8 @@
   color: var(--ink-soft);
 }
 
-.fld input {
+.fld input,
+.fld select {
   height: 44px;
   padding: 0 14px;
   border: 1.5px solid var(--line-strong);
@@ -150,7 +151,8 @@
   transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
 }
 
-.fld input:focus {
+.fld input:focus,
+.fld select:focus {
   border-color: var(--violet);
   background: var(--surface);
   box-shadow: 0 0 0 4px oklch(0.55 0.21 290 / 0.12);
