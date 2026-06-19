@@ -1,0 +1,9 @@
+<div class="toast-host" id="toasts">
+  <% if flash[:notice].present? %>
+    <%= render "shared/toast", kind: "success", title: flash[:notice], msg: nil %>
+  <% end %>
+
+  <% if flash[:alert].present? %>
+    <%= render "shared/toast", kind: "error", title: flash[:alert], msg: nil %>
+  <% end %>
+</div>

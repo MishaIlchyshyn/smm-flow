@@ -5,9 +5,9 @@ module Agencies
 
     def update
       if current_user.update(user_params)
-        redirect_to profile_path, notice: "Profile updated successfully."
+        success_respond("Successfully saved!", "Your profile has been updated.", profile_path)
       else
-        render :show, status: :unprocessable_entity
+        failed_respond("Couldn't save", current_user.errors.full_messages.to_sentence, profile_path)
       end
     end
 
