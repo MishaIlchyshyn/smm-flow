@@ -4,9 +4,17 @@ module Agencies
       def update
         if current_user.update_with_password(password_params)
           bypass_sign_in(current_user)
-          redirect_to profile_path(tab: :password), notice: "Password updated successfully."
+          success_respond(
+            "Password updated!",
+            "Your password has been changed successfully.",
+            profile_path(tab: :password)
+          )
         else
-          redirect_to profile_path(tab: :password), alert: current_user.errors.full_messages.to_sentence
+          failed_respond(
+            "Couldn't update password",
+            current_user.errors.full_messages.to_sentence,
+            profile_path(tab: :password)
+          )
         end
       end
 

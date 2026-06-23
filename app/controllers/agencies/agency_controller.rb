@@ -5,9 +5,9 @@ module Agencies
 
     def update
       if current_agency.update(agency_params)
-        redirect_to agency_path, notice: "Agency updated successfully."
+        success_respond("Successfully saved!", "Your agency settings have been updated.", agency_path)
       else
-        render :show, status: :unprocessable_entity
+        failed_respond("Couldn't save", current_agency.errors.full_messages.to_sentence, agency_path)
       end
     end
 

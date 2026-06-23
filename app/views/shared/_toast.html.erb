@@ -1,0 +1,21 @@
+<div class="toast" role="status" data-controller="toast">
+  <%= render "shared/toast_icon", kind: %>
+
+  <div class="toast-body">
+    <div class="toast-title"><%= title %></div>
+    <% if msg.present? %>
+      <div class="toast-msg"><%= msg %></div>
+    <% end %>
+  </div>
+
+  <button class="toast-x" data-action="toast#dismiss" aria-label="Dismiss">
+    <svg viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </svg>
+  </button>
+</div>
