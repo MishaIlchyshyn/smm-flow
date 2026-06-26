@@ -1,0 +1,32 @@
+<div class="breadcrumb">
+  <%= link_to "Clients", clients_path %>
+  <span class="sep">/</span>
+  <span class="cur"><%= @client.business_name %></span>
+</div>
+
+<div class="card settings-card">
+  <div class="inner-tabs">
+    <button type="button" class="on">Details</button>
+    <button type="button">Activities</button>
+    <button type="button">Notes</button>
+    <button type="button">Projects</button>
+    <%= link_to client_path(@client),
+          data: { turbo_method: :delete, turbo_confirm: "Delete this client? This cannot be undone." },
+          class: "tab-delete",
+          title: "Delete client" do %>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+        <path d="M4 7h16M10 11v6M14 11v6M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+      </svg>
+    <% end %>
+  </div>
+
+  <div class="settings-body">
+    <% if @client.converted_at %>
+      <p class="convert-note">
+        Customer from: <b><%= @client.converted_at.strftime("%-d/%m/%Y") %></b>
+      </p>
+    <% end %>
+
+    <%= render "form", client: @client %>
+  </div>
+</div>

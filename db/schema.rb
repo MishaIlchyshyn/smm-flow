@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_131102) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_25_185351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_131102) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_agencies_on_name", unique: true
     t.index ["slug"], name: "index_agencies_on_slug", unique: true
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.bigint "agency_id", null: false
+    t.string "business_name", null: false
+    t.datetime "converted_at"
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.string "instagram_url"
+    t.integer "kind", default: 0, null: false
+    t.string "owner_name", null: false
+    t.string "phone", null: false
+    t.integer "source"
+    t.string "source_detail"
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_clients_on_agency_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -50,6 +66,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_131102) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "agencies"
   add_foreign_key "memberships", "agencies"
   add_foreign_key "memberships", "users"
 end

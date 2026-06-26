@@ -7,7 +7,7 @@ module Agencies
       if current_agency.update(agency_params)
         success_respond("Successfully saved!", "Your agency settings have been updated.", agency_path)
       else
-        failed_respond("Couldn't save", current_agency.errors.full_messages.to_sentence, agency_path)
+        failed_respond("Couldn't save", errors_msg(current_agency), agency_path)
       end
     end
 

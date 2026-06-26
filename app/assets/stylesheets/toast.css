@@ -82,6 +82,7 @@
   color: var(--ink-soft);
   margin-top: 2px;
   line-height: 1.45;
+  white-space: pre-line;
 }
 
 .toast-x {
