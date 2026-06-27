@@ -4,6 +4,10 @@ module Agencies
 
     private
 
+    def errors_msg(record)
+      record.errors.full_messages.join("\n")
+    end
+
     def success_respond(title, msg, redirect_path)
       @toast_data = { kind: "success", title:, msg: }
 

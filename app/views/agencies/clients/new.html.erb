@@ -1,0 +1,11 @@
+<div class="breadcrumb">
+  <%= link_to "Clients", clients_path %>
+  <span class="sep">/</span>
+  <span class="cur">Create Client</span>
+</div>
+
+<div class="card settings-card">
+  <div class="settings-body">
+    <%= render "form", client: @client %>
+  </div>
+</div>

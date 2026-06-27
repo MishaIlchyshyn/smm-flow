@@ -1,0 +1,35 @@
+<div class="page-head">
+  <h1>Clients</h1>
+  <%= render "agencies/btns/add", path: new_client_path, label: "+ Add Client" %>
+</div>
+
+<div class="card table-card">
+  <% if @clients.any? %>
+    <div class="thead">
+      <span>Kind</span>
+      <span>Business Name</span>
+      <span>Owner Name</span>
+      <span>Email</span>
+      <span>Phone</span>
+      <span>Source</span>
+      <span>Created At</span>
+    </div>
+    <% @clients.each do |client| %>
+      <%= link_to client_path(client), class: "trow clickable" do %>
+        <span>
+          <span class="kind-tag" style="<%= kind_tag_style(client.kind) %>">
+            <%= client.kind.humanize %>
+          </span>
+        </span>
+        <span><%= client.business_name %></span>
+        <span><%= client.owner_name %></span>
+        <span><%= client.email %></span>
+        <span><%= client.phone %></span>
+        <span><%= client.source&.humanize %></span>
+        <span><%= client.created_at.strftime("%-d %b %Y") %></span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="empty-state">No clients yet. Add your first one!</div>
+  <% end %>
+</div>

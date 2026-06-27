@@ -12,7 +12,7 @@ module Agencies
         else
           failed_respond(
             "Couldn't update password",
-            current_user.errors.full_messages.to_sentence,
+            errors_msg(current_user),
             profile_path(tab: :password)
           )
         end

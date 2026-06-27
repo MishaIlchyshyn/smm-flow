@@ -1,0 +1,38 @@
+<%= form_with model: client, class: "form-grid" do |f| %>
+  <label class="fld">
+    <span>Owner Name</span>
+    <%= f.text_field :owner_name %>
+  </label>
+  <label class="fld">
+    <span>Business Name</span>
+    <%= f.text_field :business_name %>
+  </label>
+  <label class="fld">
+    <span>Email</span>
+    <%= f.email_field :email %>
+  </label>
+  <label class="fld">
+    <span>Phone</span>
+    <%= f.telephone_field :phone %>
+  </label>
+  <label class="fld">
+    <span>Instagram URL</span>
+    <%= f.url_field :instagram_url %>
+  </label>
+  <label class="fld">
+    <span>Kind</span>
+    <%= f.select :kind,
+          Client.kinds.keys.map { |k| [k.humanize, k] } %>
+  </label>
+  <label class="fld">
+    <span>Source</span>
+    <%= f.select :source,
+          Client.sources.keys.map { |s| [s.humanize, s] },
+          { include_blank: "Select source" } %>
+  </label>
+  <label class="fld">
+    <span>Source Detail</span>
+    <%= f.text_area :source_detail %>
+  </label>
+  <%= render "agencies/btns/save", f: %>
+<% end %>

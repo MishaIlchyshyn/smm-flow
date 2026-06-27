@@ -7,7 +7,7 @@ module Agencies
       if current_user.update(user_params)
         success_respond("Successfully saved!", "Your profile has been updated.", profile_path)
       else
-        failed_respond("Couldn't save", current_user.errors.full_messages.to_sentence, profile_path)
+        failed_respond("Couldn't save", errors_msg(current_user), profile_path)
       end
     end
 
