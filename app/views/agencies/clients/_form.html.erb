@@ -34,7 +34,5 @@
     <span>Source Detail</span>
     <%= f.text_area :source_detail %>
   </label>
-  <div class="save-row">
-    <%= f.submit "Save", class: "btn-primary" %>
-  </div>
+  <%= render "agencies/btns/save", f: %>
 <% end %>
