@@ -1,0 +1,18 @@
+<div class="breadcrumb">
+  <%= link_to "Clients", clients_path %>
+  <span class="sep">/</span>
+  <%= link_to @client.business_name, client_path(@client, tab: 'details') %>
+  <span class="sep">/</span>
+  <%= link_to "Projects", client_path(@client, tab: "projects") %>
+  <span class="sep">/</span>
+  <span class="cur"><%= @project.name %></span>
+</div>
+
+<div class="card settings-card">
+  <div class="settings-body">
+    <p class="convert-note">
+      Positioning complete: <b><%= @project.positioning_complete? ? "Yes" : "No" %></b>
+    </p>
+    <%= render "form", project: @project %>
+  </div>
+</div>

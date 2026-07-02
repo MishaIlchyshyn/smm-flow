@@ -15,7 +15,7 @@
       <span>Created At</span>
     </div>
     <% @clients.each do |client| %>
-      <%= link_to client_path(client), class: "trow clickable" do %>
+      <%= link_to client_path(client, tab: 'details'), class: "trow clickable" do %>
         <span>
           <span class="kind-tag" style="<%= kind_tag_style(client.kind) %>">
             <%= client.kind.humanize %>
@@ -26,7 +26,7 @@
         <span><%= client.email %></span>
         <span><%= client.phone %></span>
         <span><%= client.source&.humanize %></span>
-        <span><%= client.created_at.strftime("%-d %b %Y") %></span>
+        <span><%= l(client.created_at, format: :display) %></span>
       <% end %>
     <% end %>
   <% else %>

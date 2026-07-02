@@ -1,6 +1,8 @@
 class Client < ApplicationRecord
   belongs_to :agency
 
+  has_many :projects, dependent: :destroy
+
   enum :source, {
     ad: 0,
     instagram: 1,

@@ -6,7 +6,9 @@ module Agencies
       @clients = current_agency.clients.ordered
     end
 
-    def show; end
+    def show
+      @projects = @client.projects.ordered
+    end
 
     def new
       @client = current_agency.clients.build

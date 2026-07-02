@@ -2,9 +2,7 @@
   <h1>Profile</h1>
 </div>
 
-<div class="card settings-card"
-     data-controller="tabs"
-     data-tabs-initial-value="<%= params[:tab] == 'password' ? 1 : 0 %>">
+<div class="card settings-card" data-controller="tabs">
   <div class="inner-tabs">
     <%= render "agencies/btns/tab", label: "Base Settings", param: "" %>
     <%= render "agencies/btns/tab", label: "Password Settings", param: "password" %>
