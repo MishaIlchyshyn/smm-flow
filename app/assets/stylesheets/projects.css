@@ -1,0 +1,145 @@
+.btn-danger {
+  height: 40px;
+  padding: 0 16px;
+  border: 1.5px solid oklch(0.85 0.05 27);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--bad);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.14s, border-color 0.14s;
+}
+
+.btn-danger:hover {
+  background: oklch(0.96 0.04 27);
+  border-color: var(--bad);
+}
+
+.btn-danger svg {
+  width: 16px;
+  height: 16px;
+}
+
+.form-grid .fld.full {
+  grid-column: 1 / -1;
+}
+
+.form-grid .fld.newrow {
+  grid-column: 1 / 2;
+}
+
+.project-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.project-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+
+.project-grid {
+  grid-template-columns: 1.6fr 1fr 1.3fr 1fr 1fr 1fr !important;
+}
+
+.project-name {
+  font-weight: 700;
+}
+
+.positioning-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.positioning-complete svg {
+  width: 14px;
+  height: 14px;
+}
+
+.positioning-complete.yes {
+  color: var(--ok);
+}
+
+.positioning-complete.no {
+  color: var(--ink-faint);
+}
+
+.project-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.project-detail-head h2 {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.project-table.table-card {
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-table .thead {
+  background: transparent;
+  border-bottom: none;
+  padding: 2px 18px 4px;
+}
+
+.project-table .trow {
+  padding: 15px 18px;
+  border-bottom: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  box-shadow: 0 1px 2px oklch(0.4 0.05 290 / 0.04);
+  transition: box-shadow 0.14s, transform 0.14s, border-color 0.14s;
+}
+
+.project-table .trow:hover {
+  background: var(--surface);
+  box-shadow: 0 10px 24px -14px oklch(0.4 0.1 290 / 0.4);
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
+@media (max-width: 980px) {
+  .project-grid {
+    grid-template-columns: 1.6fr 1fr 1.3fr 1fr !important;
+  }
+
+  .project-grid span:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .project-grid {
+    grid-template-columns: 1.6fr 1fr 1.2fr !important;
+  }
+
+  .project-grid span:nth-child(4) {
+    display: none;
+  }
+}

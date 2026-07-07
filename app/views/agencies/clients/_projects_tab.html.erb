@@ -1,0 +1,39 @@
+<div class="project-head">
+  <span class="project-count"><%= pluralize(projects.size, "project") %></span>
+  <%= render "agencies/btns/add", path: new_client_project_path(client), label: "+ Add Project" %>
+</div>
+
+<div class="card table-card project-table">
+  <% if projects.any? %>
+    <div class="thead project-grid">
+      <span>Name</span>
+      <span>Status</span>
+      <span>Positioning Complete</span>
+      <span>Started At</span>
+      <span>Ended At</span>
+      <span>Created At</span>
+    </div>
+    <% projects.each do |project| %>
+      <%= link_to client_project_path(client, project), class: "trow project-grid clickable" do %>
+        <span class="project-name"><%= project.name %></span>
+        <span>
+          <span class="kind-tag" style="<%= project_status_style(project.status) %>">
+            <%= project_status_label(project.status) %>
+          </span>
+        </span>
+        <span>
+          <% if project.positioning_complete? %>
+            <span class="positioning-complete yes">Yes</span>
+          <% else %>
+            <span class="positioning-complete no">No</span>
+          <% end %>
+        </span>
+        <span><%= project.started_at ? l(project.started_at, format: :display) : "—" %></span>
+        <span><%= project.ended_at ? l(project.ended_at, format: :display) : "—" %></span>
+        <span><%= l(project.created_at, format: :display) %></span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="empty-state">No projects yet. Add your first one!</div>
+  <% end %>
+</div>

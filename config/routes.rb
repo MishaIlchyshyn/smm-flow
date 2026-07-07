@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       resource :password, only: [:update], controller: "profile/password"
     end
     resource :agency, only: [:show, :update], controller: :agency
-    resources :clients, except: [:edit]
+    resources :clients, except: [:edit] do
+      resources :projects, except: [:edit], controller: "clients/projects"
+    end
   end
 
   devise_for :users, controllers: { registrations: "registrations" }
