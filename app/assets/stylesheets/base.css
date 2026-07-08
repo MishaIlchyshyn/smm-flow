@@ -21,6 +21,17 @@ a {
   color: inherit;
 }
 
+.inline-link {
+  color: var(--violet);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.inline-link:hover {
+  text-decoration: underline;
+}
+
 button {
   font-family: inherit;
 }
