@@ -12,4 +12,11 @@ class Project < ApplicationRecord
   scope :ordered, -> { order(created_at: :desc) }
 
   validates :name, presence: true
+  validate :client_belongs_to_agency
+
+  private
+
+  def client_belongs_to_agency
+    errors.add(:client, "must belong to the same agency") if client && agency_id != client.agency_id
+  end
 end

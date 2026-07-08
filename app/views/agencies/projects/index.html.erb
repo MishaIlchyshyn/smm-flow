@@ -1,0 +1,41 @@
+<div class="page-head">
+  <h1>Projects</h1>
+  <%= render "agencies/btns/add", path: new_project_path, label: "+ Add Project" %>
+</div>
+
+<div class="card table-card">
+  <% if @projects.any? %>
+    <div class="thead project-grid-global">
+      <span>Status</span>
+      <span>Name</span>
+      <span>Client</span>
+      <span>Positioning Complete</span>
+      <span>Started At</span>
+      <span>Ended At</span>
+      <span>Created At</span>
+    </div>
+    <% @projects.each do |project| %>
+      <%= link_to project_path(project, tab: "details"), class: "trow project-grid-global clickable" do %>
+        <span>
+          <span class="kind-tag" style="<%= project_status_style(project.status) %>">
+            <%= project_status_label(project.status) %>
+          </span>
+        </span>
+        <span><%= project.name %></span>
+        <span><%= project.client.business_name %></span>
+        <span>
+          <% if project.positioning_complete? %>
+            <span class="positioning-complete yes">Yes</span>
+          <% else %>
+            <span class="positioning-complete no">No</span>
+          <% end %>
+        </span>
+        <span><%= project.started_at ? l(project.started_at, format: :display) : "—" %></span>
+        <span><%= project.ended_at ? l(project.ended_at, format: :display) : "—" %></span>
+        <span><%= l(project.created_at, format: :display) %></span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="empty-state">No projects yet.</div>
+  <% end %>
+</div>

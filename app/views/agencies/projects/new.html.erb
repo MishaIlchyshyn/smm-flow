@@ -1,0 +1,11 @@
+<div class="breadcrumb">
+  <%= link_to "Projects", projects_path %>
+  <span class="sep">/</span>
+  <span class="cur">Create project</span>
+</div>
+
+<div class="card settings-card">
+  <div class="settings-body">
+    <%= render "form", project: @project %>
+  </div>
+</div>

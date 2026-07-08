@@ -1,0 +1,25 @@
+<%= form_with model: project, class: "form-grid" do |f| %>
+  <label class="fld">
+    <span>Name</span>
+    <%= f.text_field :name %>
+  </label>
+  <label class="fld">
+    <span>Status</span>
+    <%= f.select :status, Project.statuses.keys.map { |s| [project_status_label(s), s] } %>
+  </label>
+  <label class="fld">
+    <span>Client</span>
+    <%= f.select :client_id,
+          current_agency.clients.ordered.pluck(:business_name, :id),
+          { include_blank: "Select client" } %>
+  </label>
+  <label class="fld">
+    <span>Started At</span>
+    <%= f.date_field :started_at %>
+  </label>
+  <label class="fld">
+    <span>Ended At</span>
+    <%= f.date_field :ended_at %>
+  </label>
+  <%= render "agencies/btns/save", f: %>
+<% end %>
