@@ -37,7 +37,7 @@
     </svg>
     Influencers
   </a>
-  <a href="<%= profile_path %>" class="<%= 'active' if request.path.start_with?(profile_path) %>">
+  <a href="<%= profile_path(tab: 'base_settings') %>" class="<%= 'active' if request.path.start_with?(profile_path) %>">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="8" r="3.4"/>
       <path d="M5 21v-1.5A4.5 4.5 0 0 1 9.5 15h5a4.5 4.5 0 0 1 4.5 4.5V21"/>
