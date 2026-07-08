@@ -10,6 +10,7 @@
   <div class="card settings-card">
     <div class="inner-tabs">
       <%= render "agencies/btns/tab", param: "details", label: "Details" %>
+      <%= render "agencies/btns/tab", param: "brand_positioning", label: "Brand Positioning" %>
       <%= link_to project_path(@project),
             data: { turbo_method: :delete, turbo_confirm: "Delete this project? This cannot be undone." },
             class: "tab-delete",
@@ -24,12 +25,17 @@
       <div data-tabs-target="panel">
         <p class="convert-note">
           Client:
-          <%= link_to @project.client.business_name, client_path(@project.client, tab: "details"), class: "client-link" %>
+          <%= link_to @project.client.business_name, client_path(@project.client, tab: "details"), class: "inline-link" %>
         </p>
         <p class="convert-note">
-          Positioning complete: <b><%= @project.positioning_complete? ? "Yes" : "No" %></b>
+          Positioning complete: <b><%= @project.positioning_complete? ? "YES" : "NO" %></b>
+          <%= link_to "View", project_path(@project, tab: "brand_positioning"), class: "inline-link" %>
         </p>
         <%= render "form", project: @project %>
+      </div>
+
+      <div data-tabs-target="panel" hidden>
+        <p class="empty-state">No brand positioning yet.</p>
       </div>
     </div>
   </div>

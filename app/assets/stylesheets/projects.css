@@ -77,17 +77,6 @@
   color: var(--ink-faint);
 }
 
-.client-link {
-  color: var(--violet);
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.client-link:hover {
-  text-decoration: underline;
-}
-
 .project-detail-head {
   display: flex;
   align-items: center;
