@@ -1,0 +1,36 @@
+<div data-controller="tabs">
+  <div class="breadcrumb">
+    <%= link_to "Projects", projects_path %>
+    <span class="sep">/</span>
+    <%= link_to @project.name, project_path(@project, tab: "details") %>
+    <span class="sep">/</span>
+    <span class="cur" data-tabs-target="label"></span>
+  </div>
+
+  <div class="card settings-card">
+    <div class="inner-tabs">
+      <%= render "agencies/btns/tab", param: "details", label: "Details" %>
+      <%= link_to project_path(@project),
+            data: { turbo_method: :delete, turbo_confirm: "Delete this project? This cannot be undone." },
+            class: "tab-delete",
+            title: "Delete project" do %>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <path d="M4 7h16M10 11v6M14 11v6M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+        </svg>
+      <% end %>
+    </div>
+
+    <div class="settings-body">
+      <div data-tabs-target="panel">
+        <p class="convert-note">
+          Client:
+          <%= link_to @project.client.business_name, client_path(@project.client, tab: "details"), class: "client-link" %>
+        </p>
+        <p class="convert-note">
+          Positioning complete: <b><%= @project.positioning_complete? ? "Yes" : "No" %></b>
+        </p>
+        <%= render "form", project: @project %>
+      </div>
+    </div>
+  </div>
+</div>
