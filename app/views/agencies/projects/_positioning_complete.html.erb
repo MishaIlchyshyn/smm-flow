@@ -1,0 +1,7 @@
+<p class="convert-note">
+  Positioning complete:
+  <b class="positioning-complete <%= project.positioning_complete? ? "yes" : "no" %>">
+    <%= project.positioning_complete? ? "YES" : "NO" %>
+  </b>
+  <%= link_to "View", project_path(project, tab: "brand_positioning"), class: "inline-link" %>
+</p>

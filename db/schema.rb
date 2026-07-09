@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_02_152749) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_09_193523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_02_152749) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_agencies_on_name", unique: true
     t.index ["slug"], name: "index_agencies_on_slug", unique: true
+  end
+
+  create_table "brand_positionings", force: :cascade do |t|
+    t.text "avoid_topics", default: [], array: true
+    t.string "brand_name"
+    t.text "brand_values", default: [], array: true
+    t.text "competitors"
+    t.datetime "created_at", null: false
+    t.text "goals"
+    t.string "industry"
+    t.bigint "project_id", null: false
+    t.text "target_audience"
+    t.text "tone_of_voice"
+    t.datetime "updated_at", null: false
+    t.text "usp"
+    t.text "visual_style_notes"
+    t.index ["project_id"], name: "index_brand_positionings_on_project_id", unique: true
   end
 
   create_table "clients", force: :cascade do |t|
@@ -80,6 +97,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_02_152749) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brand_positionings", "projects"
   add_foreign_key "clients", "agencies"
   add_foreign_key "memberships", "agencies"
   add_foreign_key "memberships", "users"

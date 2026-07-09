@@ -1,0 +1,71 @@
+<%= form_with model: brand_positioning, url: project_brand_positioning_path(project), method: :patch, class: "form-grid" do |f| %>
+  <% unless project.positioning_complete? %>
+    <p class="positioning-note">
+      Fill in the core fields to complete Positioning and unlock more project settings!
+    </p>
+  <% end %>
+
+  <div class="positioning-section-header">
+    <h4>Core</h4>
+  </div>
+
+  <label class="fld">
+    <span>Brand name</span>
+    <%= f.text_field :brand_name, placeholder: "Acme Co." %>
+  </label>
+
+  <label class="fld">
+    <span>Target audience</span>
+    <%= f.text_area :target_audience, rows: 2, placeholder: "Who is this brand for?" %>
+  </label>
+
+  <label class="fld">
+    <span>Tone of voice</span>
+    <%= f.text_area :tone_of_voice, rows: 2, placeholder: "How should the brand sound?" %>
+  </label>
+
+  <label class="fld">
+    <span>Goals</span>
+    <%= f.text_area :goals, rows: 2, placeholder: "What should this positioning achieve?" %>
+  </label>
+
+  <div class="positioning-section-header">
+    <h4>Brand context</h4>
+  </div>
+
+  <label class="fld">
+    <span>Industry</span>
+    <%= f.text_field :industry, placeholder: "e.g. E-commerce, SaaS, Healthcare" %>
+  </label>
+
+  <label class="fld">
+    <span>Unique selling proposition</span>
+    <%= f.text_area :usp, rows: 2, placeholder: "What makes this brand different?" %>
+  </label>
+
+  <label class="fld">
+    <span>Brand values <i class="fld-hint">(Separate with a comma)</i></span>
+    <%= f.text_field :brand_values, value: (f.object.brand_values || []).join(", "), placeholder: "trust, innovation, simplicity" %>
+  </label>
+
+  <label class="fld">
+    <span>Competitors</span>
+    <%= f.text_area :competitors, rows: 2, placeholder: "Who are the main competitors?" %>
+  </label>
+
+  <div class="positioning-section-header">
+    <h4>Constraints</h4>
+  </div>
+
+  <label class="fld">
+    <span>Topics to avoid <i class="fld-hint">(Separate with a comma)</i></span>
+    <%= f.text_field :avoid_topics, value: (f.object.avoid_topics || []).join(", "), placeholder: "politics, religion, competitors" %>
+  </label>
+
+  <label class="fld">
+    <span>Visual style notes</span>
+    <%= f.text_area :visual_style_notes, rows: 2, placeholder: "Colors, fonts, imagery style..." %>
+  </label>
+
+  <%= render "agencies/btns/save", f: %>
+<% end %>
