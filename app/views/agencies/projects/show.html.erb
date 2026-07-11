@@ -27,15 +27,12 @@
           Client:
           <%= link_to @project.client.business_name, client_path(@project.client, tab: "details"), class: "inline-link" %>
         </p>
-        <p class="convert-note">
-          Positioning complete: <b><%= @project.positioning_complete? ? "YES" : "NO" %></b>
-          <%= link_to "View", project_path(@project, tab: "brand_positioning"), class: "inline-link" %>
-        </p>
+        <%= render "agencies/projects/positioning_complete", project: @project %>
         <%= render "form", project: @project %>
       </div>
 
       <div data-tabs-target="panel" hidden>
-        <p class="empty-state">No brand positioning yet.</p>
+        <%= render "agencies/projects/brand_positionings/form", project: @project, brand_positioning: @brand_positioning %>
       </div>
     </div>
   </div>

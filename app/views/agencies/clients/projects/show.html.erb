@@ -10,10 +10,7 @@
 
 <div class="card settings-card">
   <div class="settings-body">
-    <p class="convert-note">
-      Positioning complete: <b><%= @project.positioning_complete? ? "YES" : "NO" %></b>
-      <%= link_to "View", project_path(@project, tab: "brand_positioning"), class: "inline-link" %>
-    </p>
+    <%= render "agencies/projects/positioning_complete", project: @project %>
     <%= render "form", project: @project %>
   </div>
 </div>

@@ -20,7 +20,9 @@ module Agencies
       end
     end
 
-    def show; end
+    def show
+      @brand_positioning = @project.brand_positioning || @project.build_brand_positioning
+    end
 
     def update
       if @project.update(project_params)

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :clients, except: [:edit] do
       resources :projects, except: [:edit], controller: "clients/projects"
     end
-    resources :projects, except: [:edit]
+    resources :projects, except: [:edit] do
+      resource :brand_positioning, only: [:update], controller: "projects/brand_positionings"
+    end
   end
 
   devise_for :users, controllers: { registrations: "registrations" }
