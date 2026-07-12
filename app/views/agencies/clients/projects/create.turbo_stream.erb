@@ -1,1 +1,6 @@
+<% if @project.valid? %>
+  <%= turbo_stream.update "client_projects_panel" do %>
+    <%= render "agencies/clients/projects/form_panel", project: @project %>
+  <% end %>
+<% end %>
 <%= turbo_stream.append "toasts", partial: "shared/toast", locals: @toast_data %>
