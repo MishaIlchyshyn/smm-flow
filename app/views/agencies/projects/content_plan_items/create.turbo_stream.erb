@@ -1,0 +1,6 @@
+<% if @content_plan_item.valid? %>
+  <%= turbo_stream.update "project_content_plan_items_panel" do %>
+    <%= render "agencies/projects/content_plan_items/form_panel", content_plan_item: @content_plan_item %>
+  <% end %>
+<% end %>
+<%= turbo_stream.append "toasts", partial: "shared/toast", locals: @toast_data %>

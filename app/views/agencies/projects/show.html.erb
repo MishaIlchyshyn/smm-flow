@@ -11,6 +11,7 @@
     <div class="inner-tabs">
       <%= render "agencies/btns/tab", param: "details", label: "Details" %>
       <%= render "agencies/btns/tab", param: "brand_positioning", label: "Brand Positioning" %>
+      <%= render "agencies/btns/tab", param: "content_plan_items", label: "Content Plan" %>
       <%= link_to project_path(@project),
             data: { turbo_method: :delete, turbo_confirm: "Delete this project? This cannot be undone." },
             class: "tab-delete",
@@ -33,6 +34,12 @@
 
       <div data-tabs-target="panel" hidden>
         <%= render "agencies/projects/brand_positionings/form", project: @project, brand_positioning: @brand_positioning %>
+      </div>
+
+      <div data-tabs-target="panel" hidden>
+        <%= turbo_frame_tag "project_content_plan_items_panel" do %>
+          <%= render "agencies/projects/content_plan_items/table", project: @project, content_plan_items: @content_plan_items %>
+        <% end %>
       </div>
     </div>
   </div>
