@@ -1,9 +1,9 @@
-<div class="project-head">
-  <span class="project-count"><%= pluralize(content_plan_items.size, "plan") %></span>
+<div class="list-head">
+  <span class="list-count"><%= pluralize(content_plan_items.size, "plan") %></span>
   <%= render "agencies/btns/add", path: new_project_content_plan_item_path(project), label: "+ Add Plan" %>
 </div>
 
-<div class="card table-card project-table">
+<div class="card table-card list-table">
   <% if content_plan_items.any? %>
     <div class="thead content-plan-grid">
       <span>Title</span>

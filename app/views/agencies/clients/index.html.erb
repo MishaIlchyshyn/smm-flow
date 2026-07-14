@@ -5,7 +5,7 @@
 
 <div class="card table-card">
   <% if @clients.any? %>
-    <div class="thead">
+    <div class="thead client-grid">
       <span>Kind</span>
       <span>Business Name</span>
       <span>Owner Name</span>
@@ -15,7 +15,7 @@
       <span>Created At</span>
     </div>
     <% @clients.each do |client| %>
-      <%= link_to client_path(client, tab: 'details'), class: "trow clickable" do %>
+      <%= link_to client_path(client, tab: 'details'), class: "trow client-grid clickable" do %>
         <span>
           <span class="kind-tag" style="<%= kind_tag_style(client.kind) %>">
             <%= client.kind.humanize %>

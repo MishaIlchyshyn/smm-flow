@@ -1,9 +1,9 @@
-<div class="project-head">
-  <span class="project-count"><%= pluralize(projects.size, "project") %></span>
+<div class="list-head">
+  <span class="list-count"><%= pluralize(projects.size, "project") %></span>
   <%= render "agencies/btns/add", path: new_client_project_path(client), label: "+ Add Project" %>
 </div>
 
-<div class="card table-card project-table">
+<div class="card table-card list-table">
   <% if projects.any? %>
     <div class="thead project-grid">
       <span>Name</span>

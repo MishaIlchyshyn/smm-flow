@@ -36,6 +36,109 @@ a {
   font-weight: 700;
 }
 
+.table-card {
+  overflow: hidden;
+}
+
+.thead,
+.trow {
+  display: grid;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+}
+
+.thead {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--violet-soft-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.trow {
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.trow:last-child {
+  border-bottom: none;
+}
+
+.trow:hover {
+  background: var(--violet-soft-2);
+}
+
+.trow.clickable {
+  cursor: pointer;
+}
+
+.kind-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 14px;
+}
+
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.list-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+
+.list-table.table-card {
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-table .thead {
+  background: transparent;
+  border-bottom: none;
+  padding: 2px 18px 4px;
+}
+
+.list-table .trow {
+  padding: 15px 18px;
+  border-bottom: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  box-shadow: 0 1px 2px oklch(0.4 0.05 290 / 0.04);
+  transition: box-shadow 0.14s, transform 0.14s, border-color 0.14s;
+}
+
+.list-table .trow:hover {
+  background: var(--surface);
+  box-shadow: 0 10px 24px -14px oklch(0.4 0.1 290 / 0.4);
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
 button {
   font-family: inherit;
 }
