@@ -32,6 +32,10 @@ a {
   text-decoration: underline;
 }
 
+.row-title {
+  font-weight: 700;
+}
+
 button {
   font-family: inherit;
 }

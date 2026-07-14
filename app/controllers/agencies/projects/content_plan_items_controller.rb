@@ -6,14 +6,14 @@ module Agencies
 
       def new
         @content_plan_item = @project.content_plan_items.build
-        redirect_to project_path(@project, tab: "content_plan_items") unless turbo_frame_request?
+        redirect_to project_path(@project, tab: "content_planing") unless turbo_frame_request?
       end
 
       def create
         @content_plan_item = @project.content_plan_items.build(content_plan_item_params)
 
         if @content_plan_item.save
-          success_respond("Successfully saved!", "Content plan item has been created.",
+          success_respond("Successfully saved!", "Content plan has been created.",
                            project_content_plan_item_path(@project, @content_plan_item))
         else
           failed_respond("Couldn't save", errors_msg(@content_plan_item),
@@ -22,12 +22,12 @@ module Agencies
       end
 
       def show
-        redirect_to project_path(@project, tab: "content_plan_items") unless turbo_frame_request?
+        redirect_to project_path(@project, tab: "content_planing") unless turbo_frame_request?
       end
 
       def update
         if @content_plan_item.update(content_plan_item_params)
-          success_respond("Successfully saved!", "Content plan item has been updated.",
+          success_respond("Successfully saved!", "Content plan has been updated.",
                            project_content_plan_item_path(@project, @content_plan_item))
         else
           failed_respond("Couldn't save", errors_msg(@content_plan_item),
@@ -37,7 +37,7 @@ module Agencies
 
       def destroy
         @content_plan_item.destroy
-        redirect_to project_path(@project, tab: "content_plan_items"), status: :see_other
+        redirect_to project_path(@project, tab: "content_planing"), status: :see_other
       end
 
       private

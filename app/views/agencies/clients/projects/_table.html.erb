@@ -15,7 +15,7 @@
     </div>
     <% projects.each do |project| %>
       <%= link_to client_project_path(client, project), class: "trow project-grid clickable" do %>
-        <span class="project-name"><%= project.name %></span>
+        <span class="row-title"><%= project.name %></span>
         <span>
           <span class="kind-tag" style="<%= project_status_style(project.status) %>">
             <%= project_status_label(project.status) %>

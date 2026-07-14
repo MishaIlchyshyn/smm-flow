@@ -5,7 +5,7 @@ class CreateContentPlanItems < ActiveRecord::Migration[8.1]
       t.integer :platform, null: false
       t.integer :content_type, null: false
       t.string :title, null: false
-      t.date :scheduled_for, null: false
+      t.datetime :scheduled_for, null: false
       t.integer :status, null: false, default: 0
       t.text :caption_draft
       t.text :visual_notes

@@ -33,6 +33,4 @@ en:
     formats:
       display: "%-d %b %Y"
       display_slash: "%-d/%m/%Y"
-  date:
-    formats:
-      display: "%-d %b %Y"
+      display_with_time: "%-d %b %Y, %-I:%M %p"

@@ -1,9 +1,9 @@
 <p class="convert-note">
-  <%= link_to "← Back to content plan", project_path(@project, tab: "content_plan_items"), class: "inline-link" %>
+  <%= link_to "← Back to plans", project_path(@project, tab: "content_planing"), class: "inline-link" %>
 </p>
 
 <div class="project-head">
-  <span class="project-count"><%= content_plan_item.persisted? ? "Edit Content Plan Item" : "New Content Plan Item" %></span>
+  <span class="project-count"><%= content_plan_item.persisted? ? "Edit Plan" : "New Plan" %></span>
 </div>
 
 <%= render "form", content_plan_item: %>

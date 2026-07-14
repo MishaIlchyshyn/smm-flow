@@ -84,9 +84,6 @@
   grid-template-columns: 1.6fr 1fr 1.3fr 1fr 1fr 1fr !important;
 }
 
-.project-name {
-  font-weight: 700;
-}
 
 .positioning-complete {
   display: inline-flex;
@@ -204,24 +201,4 @@
 
 .content-plan-grid {
   grid-template-columns: 1.6fr 1fr 1.2fr 1fr 1fr !important;
-}
-
-@media (max-width: 980px) {
-  .content-plan-grid {
-    grid-template-columns: 1.6fr 1fr 1.2fr 1fr !important;
-  }
-
-  .content-plan-grid span:nth-child(5) {
-    display: none;
-  }
-}
-
-@media (max-width: 760px) {
-  .content-plan-grid {
-    grid-template-columns: 1.6fr 1fr 1.2fr !important;
-  }
-
-  .content-plan-grid span:nth-child(4) {
-    display: none;
-  }
 }
