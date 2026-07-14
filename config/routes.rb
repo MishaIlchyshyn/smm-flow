@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
     resources :projects, except: [:edit] do
       resource :brand_positioning, only: [:update], controller: "projects/brand_positionings"
+      resources :content_plan_items, except: [:edit], controller: "projects/content_plan_items"
     end
   end
 

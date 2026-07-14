@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_193523) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_13_203845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -57,6 +57,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_193523) do
     t.index ["agency_id"], name: "index_clients_on_agency_id"
   end
 
+  create_table "content_plan_items", force: :cascade do |t|
+    t.text "caption_draft"
+    t.integer "content_type", null: false
+    t.datetime "created_at", null: false
+    t.integer "platform", null: false
+    t.bigint "project_id", null: false
+    t.datetime "scheduled_for", null: false
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.text "visual_notes"
+    t.index ["project_id"], name: "index_content_plan_items_on_project_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "agency_id", null: false
     t.datetime "created_at", null: false
@@ -99,6 +113,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_193523) do
 
   add_foreign_key "brand_positionings", "projects"
   add_foreign_key "clients", "agencies"
+  add_foreign_key "content_plan_items", "projects"
   add_foreign_key "memberships", "agencies"
   add_foreign_key "memberships", "users"
   add_foreign_key "projects", "agencies"

@@ -1,0 +1,48 @@
+<%= form_with model: [@project, content_plan_item], class: "form-grid" do |f| %>
+  <label class="fld">
+    <span>Title</span>
+    <%= f.text_field :title %>
+  </label>
+  <label class="fld">
+    <span>Platform</span>
+    <%= f.select :platform,
+          ContentPlanItem.platforms.keys.map { |p| [content_plan_item_platform_label(p), p] },
+          include_blank: true %>
+  </label>
+  <label class="fld">
+    <span>Content Type</span>
+    <%= f.select :content_type,
+          ContentPlanItem.content_types.keys.map { |c| [content_plan_item_content_type_label(c), c] },
+          include_blank: true %>
+  </label>
+  <label class="fld">
+    <span>Scheduled For</span>
+    <%= f.datetime_field :scheduled_for %>
+  </label>
+  <label class="fld">
+    <span>Status</span>
+    <%= f.select :status,
+          ContentPlanItem.statuses.keys.map { |s| [content_plan_item_status_label(s), s] } %>
+  </label>
+  <label class="fld newrow">
+    <span>Caption Draft</span>
+    <%= f.text_area :caption_draft, rows: 3 %>
+  </label>
+  <label class="fld">
+    <span>Visual Notes</span>
+    <%= f.text_area :visual_notes, rows: 3 %>
+  </label>
+  <div class="save-row">
+    <%= f.submit "Save", class: "btn-primary" %>
+    <% if content_plan_item.persisted? %>
+      <%= link_to project_content_plan_item_path(@project, content_plan_item),
+            data: { turbo_method: :delete, turbo_confirm: "Delete this content plan? This cannot be undone." },
+            class: "btn-danger" do %>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <path d="M4 7h16M10 11v6M14 11v6M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+        </svg>
+        Delete Plan
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<div class="list-head">
+  <span class="list-count"><%= pluralize(content_plan_items.size, "plan") %></span>
+  <%= render "agencies/btns/add", path: new_project_content_plan_item_path(project), label: "+ Add Plan" %>
+</div>
+
+<div class="card table-card list-table">
+  <% if content_plan_items.any? %>
+    <div class="thead content-plan-grid">
+      <span>Title</span>
+      <span>Platform</span>
+      <span>Content Type</span>
+      <span>Scheduled For</span>
+      <span>Status</span>
+    </div>
+    <% content_plan_items.each do |content_plan_item| %>
+      <%= link_to project_content_plan_item_path(project, content_plan_item), class: "trow content-plan-grid clickable" do %>
+        <span class="row-title"><%= content_plan_item.title %></span>
+        <span><%= content_plan_item_platform_label(content_plan_item.platform) %></span>
+        <span><%= content_plan_item_content_type_label(content_plan_item.content_type) %></span>
+        <span><%= l(content_plan_item.scheduled_for, format: :display_with_time) %></span>
+        <span>
+          <span class="kind-tag" style="<%= content_plan_item_status_style(content_plan_item.status) %>">
+            <%= content_plan_item_status_label(content_plan_item.status) %>
+          </span>
+        </span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="empty-state">No content plans yet. Add your first one!</div>
+  <% end %>
+</div>

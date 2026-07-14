@@ -2,8 +2,8 @@
   <%= link_to "← Back to projects", client_path(@client, tab: "projects"), class: "inline-link" %>
 </p>
 
-<div class="project-head">
-  <span class="project-count"><%= project.persisted? ? "Edit Project" : "New Project" %></span>
+<div class="list-head">
+  <span class="list-count"><%= project.persisted? ? "Edit Project" : "New Project" %></span>
 </div>
 
 <% if project.persisted? %>
