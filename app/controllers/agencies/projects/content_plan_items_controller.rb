@@ -6,7 +6,7 @@ module Agencies
 
       def new
         @content_plan_item = @project.content_plan_items.build
-        redirect_to project_path(@project, tab: "content_planing") unless turbo_frame_request?
+        redirect_to project_path(@project, tab: "content_planning") unless turbo_frame_request?
       end
 
       def create
@@ -22,7 +22,7 @@ module Agencies
       end
 
       def show
-        redirect_to project_path(@project, tab: "content_planing") unless turbo_frame_request?
+        redirect_to project_path(@project, tab: "content_planning") unless turbo_frame_request?
       end
 
       def update
@@ -37,7 +37,7 @@ module Agencies
 
       def destroy
         @content_plan_item.destroy
-        redirect_to project_path(@project, tab: "content_planing"), status: :see_other
+        redirect_to project_path(@project, tab: "content_planning"), status: :see_other
       end
 
       private
