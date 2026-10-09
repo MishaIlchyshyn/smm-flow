@@ -147,7 +147,9 @@
   margin-top: 22px;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 4px;
+  text-align: right;
 }
 
 .auth-links a {
