@@ -11,10 +11,6 @@ class User < ApplicationRecord
     avatar_url.presence || avatar_abbr
   end
 
-  def role_for(agency)
-    memberships.find_by(agency:).role
-  end
-
   private
 
   def avatar_abbr

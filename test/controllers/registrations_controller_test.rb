@@ -18,7 +18,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal "Test User's agency", Agency.last.name
-    assert_redirected_to dashboard_path
+    assert_redirected_to clients_path
     follow_redirect!
     assert_response :success
   end

@@ -1,7 +1,0 @@
-<%= form_with model: current_agency, url: agency_path, method: :patch, class: "form-col" do |f| %>
-  <label class="fld">
-    <span>Name</span>
-    <%= f.text_field :name %>
-  </label>
-  <%= render "agencies/btns/save", f: %>
-<% end %>

@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if service.success?
       sign_in service.user
-      redirect_to dashboard_path, status: :see_other, notice: "Welcome to #{service.agency.name}!"
+      redirect_to clients_path, status: :see_other, notice: "Welcome to #{service.agency.name}!"
     else
       @user = service.user
       render :new, status: :unprocessable_entity
