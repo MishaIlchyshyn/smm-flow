@@ -1,4 +1,7 @@
 <%= form_with model: project, class: "form-grid" do |f| %>
+  <% if local_assigns[:title] %>
+    <h4 class="form-title"><%= title %></h4>
+  <% end %>
   <label class="fld">
     <span>Name</span>
     <%= f.text_field :name %>

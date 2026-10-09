@@ -103,6 +103,7 @@
   box-shadow: 0 0 0 4px oklch(0.55 0.21 290 / 0.12);
 }
 
+.form-grid .form-title,
 .form-grid .save-row {
   grid-column: 1 / -1;
 }

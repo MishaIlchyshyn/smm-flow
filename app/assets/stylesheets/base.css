@@ -93,6 +93,14 @@ a {
   font-size: 14px;
 }
 
+.form-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
 .list-head {
   display: flex;
   align-items: center;
