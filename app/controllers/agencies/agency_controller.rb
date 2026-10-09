@@ -14,7 +14,7 @@ module Agencies
     private
 
     def agency_params
-      params.require(:agency).permit(:name, :timezone)
+      params.require(:agency).permit(:name)
     end
   end
 end
