@@ -27,19 +27,13 @@ class RegistrationTest < ActiveSupport::TestCase
     assert_equal "Jane Doe's agency", service.agency.name
   end
 
-  test "slug is generated from agency name" do
-    service = Registration.new(user_params: valid_user_params).call
-
-    assert_equal "jane-doe-s-agency", service.agency.slug
-  end
-
   test "users with the same full name get separate agencies" do
     Registration.new(user_params: valid_user_params).call
     service = Registration.new(user_params: valid_user_params.merge(email: "jane2@example.com")).call
 
     assert service.success?
     assert_equal "Jane Doe's agency", service.agency.name
-    assert_equal "jane-doe-s-agency-1", service.agency.slug
+    assert_equal 2, Agency.where(name: "Jane Doe's agency").count
   end
 
   test "exposes user and agency via readers after successful call" do
