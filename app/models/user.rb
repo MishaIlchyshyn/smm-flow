@@ -7,8 +7,6 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true
 
-  attr_accessor :agency_name, :agency_timezone
-
   def avatar
     avatar_url.presence || avatar_abbr
   end

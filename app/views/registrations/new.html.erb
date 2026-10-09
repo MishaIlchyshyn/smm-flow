@@ -1,5 +1,5 @@
 <div class="auth-page">
-  <div class="auth-box auth-box--wide">
+  <div class="auth-box">
     <div class="auth-card">
       <%= render "application/logo", url: root_path, css_class: "auth-brand" %>
 
@@ -23,35 +23,14 @@
                 class: "auth-input" %>
           </div>
 
-          <div class="auth-cols">
-            <div class="auth-field">
-              <%= f.label :password %>
-              <%= f.password_field :password, class: "auth-input" %>
-            </div>
-
-            <div class="auth-field">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, class: "auth-input" %>
-            </div>
-          </div>
-
-          <hr class="auth-divider">
-
-          <p class="auth-section-label">Agency details</p>
-
           <div class="auth-field">
-            <%= f.label :agency_name, "Agency Name" %>
-            <%= f.text_field :agency_name,
-                placeholder: "Acme Marketing",
-                class: "auth-input" %>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "auth-input" %>
           </div>
 
           <div class="auth-field">
-            <%= f.label :agency_timezone, "Agency Timezone" %>
-            <%= f.select :agency_timezone,
-                         ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] },
-                         { prompt: "Select Timezone" },
-                         class: "auth-input" %>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: "auth-input" %>
           </div>
 
           <%= f.submit "Create account", class: "auth-btn" %>

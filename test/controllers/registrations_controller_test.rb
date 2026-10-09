@@ -7,9 +7,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
         full_name: "Test User",
         email: "newuser@example.com",
         password: "password123",
-        password_confirmation: "password123",
-        agency_name: "Test Agency",
-        agency_timezone: "Eastern Time (US & Canada)"
+        password_confirmation: "password123"
       }
     }
   end
@@ -19,6 +17,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
       post user_registration_path, params: valid_params
     end
 
+    assert_equal "Test User's agency", Agency.last.name
     assert_redirected_to dashboard_path
     follow_redirect!
     assert_response :success
@@ -29,17 +28,6 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     bad_params[:user][:email] = ""
 
     assert_no_difference "User.count" do
-      post user_registration_path, params: bad_params
-    end
-
-    assert_response :unprocessable_entity
-  end
-
-  test "invalid agency params re-renders registration form with agency errors" do
-    bad_params = valid_params
-    bad_params[:user][:agency_name] = ""
-
-    assert_no_difference ["User.count", "Agency.count"] do
       post user_registration_path, params: bad_params
     end
 

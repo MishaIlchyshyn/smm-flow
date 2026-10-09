@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
-    service = ::Registration.new(user_params:, agency_params:).call
+    service = ::Registration.new(user_params:).call
 
     if service.success?
       sign_in service.user
@@ -15,10 +15,5 @@ class RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
-  end
-
-  def agency_params
-    params.require(:user).permit(:agency_name, :agency_timezone)
-          .transform_keys { |k| k.sub("agency_", "") }
   end
 end

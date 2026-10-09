@@ -3,11 +3,5 @@
     <span>Name</span>
     <%= f.text_field :name %>
   </label>
-  <label class="fld">
-    <span>Timezone</span>
-    <%= f.select :timezone,
-                 ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] },
-                 { prompt: "Select Timezone" } %>
-  </label>
   <%= render "agencies/btns/save", f: %>
 <% end %>

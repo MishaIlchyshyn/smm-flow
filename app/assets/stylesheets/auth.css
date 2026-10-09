@@ -9,10 +9,6 @@
 
 .auth-box {
   width: 100%;
-  max-width: 448px;
-}
-
-.auth-box--wide {
   max-width: 560px;
 }
 
@@ -98,27 +94,6 @@
 .auth-input:focus {
   border-color: var(--violet);
   box-shadow: 0 0 0 3px oklch(0.55 0.21 290 / 0.12);
-}
-
-.auth-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.auth-divider {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 6px 0 0;
-}
-
-.auth-section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin: 0 0 2px;
 }
 
 .auth-checkbox-row {
