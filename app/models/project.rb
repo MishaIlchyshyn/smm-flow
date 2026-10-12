@@ -2,9 +2,6 @@ class Project < ApplicationRecord
   belongs_to :agency
   belongs_to :client
 
-  has_one :brand_positioning, dependent: :destroy
-  has_many :content_plan_items, dependent: :destroy
-
   enum :status, {
     active: 0,
     paused: 1,

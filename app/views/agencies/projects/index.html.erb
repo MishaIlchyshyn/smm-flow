@@ -9,7 +9,6 @@
       <span>Status</span>
       <span>Name</span>
       <span>Client</span>
-      <span>Positioning Complete</span>
       <span>Started At</span>
       <span>Ended At</span>
       <span>Created At</span>
@@ -23,13 +22,6 @@
         </span>
         <span><%= project.name %></span>
         <span><%= project.client.business_name %></span>
-        <span>
-          <% if project.positioning_complete? %>
-            <span class="positioning-complete yes">Yes</span>
-          <% else %>
-            <span class="positioning-complete no">No</span>
-          <% end %>
-        </span>
         <span><%= project.started_at ? l(project.started_at, format: :display) : "—" %></span>
         <span><%= project.ended_at ? l(project.ended_at, format: :display) : "—" %></span>
         <span><%= l(project.created_at, format: :display) %></span>
