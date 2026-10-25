@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_094918) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_25_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,23 +18,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_094918) do
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "brand_positionings", force: :cascade do |t|
-    t.text "avoid_topics", default: [], array: true
-    t.string "brand_name"
-    t.text "brand_values", default: [], array: true
-    t.text "competitors"
-    t.datetime "created_at", null: false
-    t.text "goals"
-    t.string "industry"
-    t.bigint "project_id", null: false
-    t.text "target_audience"
-    t.text "tone_of_voice"
-    t.datetime "updated_at", null: false
-    t.text "usp"
-    t.text "visual_style_notes"
-    t.index ["project_id"], name: "index_brand_positionings_on_project_id", unique: true
   end
 
   create_table "clients", force: :cascade do |t|
@@ -51,20 +34,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_094918) do
     t.string "source_detail"
     t.datetime "updated_at", null: false
     t.index ["agency_id"], name: "index_clients_on_agency_id"
-  end
-
-  create_table "content_plan_items", force: :cascade do |t|
-    t.text "caption_draft"
-    t.integer "content_type", null: false
-    t.datetime "created_at", null: false
-    t.integer "platform", null: false
-    t.bigint "project_id", null: false
-    t.datetime "scheduled_for", null: false
-    t.integer "status", default: 0, null: false
-    t.string "title", null: false
-    t.datetime "updated_at", null: false
-    t.text "visual_notes"
-    t.index ["project_id"], name: "index_content_plan_items_on_project_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -85,7 +54,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_094918) do
     t.datetime "created_at", null: false
     t.datetime "ended_at"
     t.string "name", null: false
-    t.boolean "positioning_complete", default: false, null: false
     t.datetime "started_at"
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
@@ -107,9 +75,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_094918) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "brand_positionings", "projects"
   add_foreign_key "clients", "agencies"
-  add_foreign_key "content_plan_items", "projects"
   add_foreign_key "memberships", "agencies"
   add_foreign_key "memberships", "users"
   add_foreign_key "projects", "agencies"

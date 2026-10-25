@@ -1,6 +1,6 @@
 # SMM Flow
 
-SMM Flow is a Ruby on Rails application for social media marketing agencies. It gives a small agency one place to manage clients, track ongoing SMM projects, capture brand strategy, and plan content across platforms.
+SMM Flow is a Ruby on Rails application for social media marketing agencies. It gives a small agency one place to manage clients and track ongoing SMM projects.
 
 Without a tool like this, agency work is often split across chats, notes, spreadsheets, and documents. SMM Flow brings that workflow into a single app so teams can move from client onboarding to project execution with less context switching.
 
@@ -10,15 +10,11 @@ SMM Flow is built for agencies that need to:
 
 - keep client information organized
 - track projects per client
-- document brand positioning and strategy inputs
-- plan and monitor upcoming content pieces
 
 In practice, it helps answer:
 
 - Who is this client and what stage are they in?
 - What projects are active right now?
-- Is the brand positioning filled in and complete?
-- What content is scheduled next for Instagram, YouTube, TikTok, or LinkedIn?
 
 ## Quick Start
 
@@ -44,8 +40,6 @@ PORT=3001 bin/dev
 - Authentication with Devise
 - Client management with lead, customer, and terminated states
 - Projects linked to clients
-- Brand positioning forms for strategy details
-- Content planning by platform, content type, schedule, and status
 
 ## Tech Stack
 

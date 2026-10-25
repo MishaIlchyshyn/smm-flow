@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     const param = new URLSearchParams(window.location.search).get("tab")
     const index = this.tabTargets.findIndex(t => t.dataset.tabsParam === param)
-    this.showTab(index)
+    this.showTab(Math.max(index, 0))
   }
 
   switch(event) {

@@ -8,7 +8,6 @@
     <div class="thead project-grid">
       <span>Name</span>
       <span>Status</span>
-      <span>Positioning Complete</span>
       <span>Started At</span>
       <span>Ended At</span>
       <span>Created At</span>
@@ -20,13 +19,6 @@
           <span class="kind-tag" style="<%= project_status_style(project.status) %>">
             <%= project_status_label(project.status) %>
           </span>
-        </span>
-        <span>
-          <% if project.positioning_complete? %>
-            <span class="positioning-complete yes">Yes</span>
-          <% else %>
-            <span class="positioning-complete no">No</span>
-          <% end %>
         </span>
         <span><%= project.started_at ? l(project.started_at, format: :display) : "—" %></span>
         <span><%= project.ended_at ? l(project.ended_at, format: :display) : "—" %></span>

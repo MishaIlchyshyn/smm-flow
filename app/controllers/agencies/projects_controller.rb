@@ -20,10 +20,7 @@ module Agencies
       end
     end
 
-    def show
-      @brand_positioning = @project.brand_positioning || @project.build_brand_positioning
-      @content_plan_items = @project.content_plan_items.ordered
-    end
+    def show; end
 
     def update
       if @project.update(project_params)

@@ -144,6 +144,11 @@
   color: var(--ink-faint);
 }
 
+.req {
+  color: var(--ink-faint);
+  font-weight: 700;
+}
+
 .fld input,
 .fld select {
   height: 44px;
