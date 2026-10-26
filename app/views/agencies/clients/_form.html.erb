@@ -37,5 +37,5 @@
     <span>Source Detail</span>
     <%= f.text_area :source_detail, placeholder: "e.g. Referred by Bloom Bakery" %>
   </label>
-  <%= render "agencies/btns/save", f: %>
+  <%= render "agencies/btns/save", f:, cancel: local_assigns[:cancel] %>
 <% end %>

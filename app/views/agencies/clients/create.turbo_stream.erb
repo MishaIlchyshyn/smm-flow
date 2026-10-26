@@ -1,1 +1,8 @@
+<% if @client.persisted? %>
+  <%= turbo_stream.replace "clients_panel" do %>
+    <%= turbo_frame_tag "clients_panel" do %>
+      <%= render "agencies/clients/list", clients: @clients %>
+    <% end %>
+  <% end %>
+<% end %>
 <%= turbo_stream.append "toasts", partial: "shared/toast", locals: @toast_data %>
