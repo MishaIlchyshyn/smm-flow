@@ -12,15 +12,17 @@ module Agencies
 
     def new
       @client = current_agency.clients.build
+      redirect_to clients_path unless turbo_frame_request?
     end
 
     def create
       @client = current_agency.clients.build(client_params)
 
       if @client.save
-        redirect_to client_path(@client), notice: "Client created."
+        @clients = current_agency.clients.ordered
+        success_respond("Successfully saved!", "Client has been created.", clients_path)
       else
-        failed_respond("Couldn't save", errors_msg(@client), new_client_path)
+        failed_respond("Couldn't save", errors_msg(@client), clients_path)
       end
     end
 
