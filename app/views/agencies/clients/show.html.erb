@@ -10,7 +10,6 @@
   <div class="card settings-card">
     <div class="inner-tabs">
       <%= render "agencies/btns/tab", param: "details", label: "Details" %>
-      <%= render "agencies/btns/tab", param: "projects", label: "Projects" %>
       <%= link_to client_path(@client),
             data: { turbo_method: :delete, turbo_confirm: "Delete this client? This cannot be undone." },
             class: "tab-delete",
@@ -29,10 +28,6 @@
           </p>
         <% end %>
         <%= render "form", client: @client %>
-      </div>
-
-      <div data-tabs-target="panel" hidden>
-        <%= render "projects_tab", client: @client, projects: @projects %>
       </div>
     </div>
   </div>

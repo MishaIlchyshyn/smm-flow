@@ -7,7 +7,6 @@ module Agencies
     end
 
     def show
-      @projects = @client.projects.ordered
     end
 
     def new
