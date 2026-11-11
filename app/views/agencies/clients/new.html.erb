@@ -1,11 +1,11 @@
-<div class="breadcrumb">
-  <%= link_to "Clients", clients_path %>
-  <span class="sep">/</span>
-  <span class="cur">Create Client</span>
-</div>
-
-<div class="card settings-card">
-  <div class="settings-body">
-    <%= render "form", client: @client, title: "Add a new client" %>
+<%= turbo_frame_tag "clients_panel" do %>
+  <div class="page-head">
+    <h1>Clients</h1>
   </div>
-</div>
+
+  <div class="card settings-card">
+    <div class="settings-body">
+      <%= render "form", client: @client, title: "Add a new client", cancel: true %>
+    </div>
+  </div>
+<% end %>
