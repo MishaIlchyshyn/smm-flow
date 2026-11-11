@@ -1,9 +1,0 @@
-<p class="convert-note">
-  <%= link_to "← Back to projects", client_path(@client, tab: "projects"), class: "inline-link" %>
-</p>
-
-<div class="list-head">
-  <span class="list-count"><%= project.persisted? ? "Edit Project" : "New Project" %></span>
-</div>
-
-<%= render "form", project: %>
