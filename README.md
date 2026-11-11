@@ -43,7 +43,7 @@ PORT=3001 bin/dev
 
 ## Tech Stack
 
-- Ruby 3.4.8
+- Ruby 3.4.12
 - Rails 8.1.3
 - PostgreSQL
 - Devise for authentication
@@ -57,7 +57,7 @@ PORT=3001 bin/dev
 
 Make sure the following are installed locally:
 
-- Ruby 3.4.8
+- Ruby 3.4.12
 - Bundler
 - PostgreSQL
 
