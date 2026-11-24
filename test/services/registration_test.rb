@@ -10,15 +10,13 @@ class RegistrationTest < ActiveSupport::TestCase
     }
   end
 
-  test "creates user, agency, and owner membership on success" do
+  test "creates user and agency on success" do
     service = Registration.new(user_params: valid_user_params).call
 
     assert service.success?
     assert service.user.persisted?
     assert service.agency.persisted?
-    assert_equal 1, service.user.memberships.count
-    assert service.user.memberships.first.owner?
-    assert service.user.memberships.first.active?
+    assert_equal service.agency, service.user.agency
   end
 
   test "agency name is generated from user full name" do
