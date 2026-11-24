@@ -13,7 +13,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "successful registration creates user, agency, and signs in" do
-    assert_difference ["User.count", "Agency.count", "Membership.count"], 1 do
+    assert_difference ["User.count", "Agency.count"], 1 do
       post user_registration_path, params: valid_params
     end
 
@@ -35,7 +35,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "duplicate email re-renders registration form" do
-    User.create!(full_name: "Existing", email: "newuser@example.com", password: "password123")
+    User.create!(full_name: "Existing", email: "newuser@example.com", password: "password123", agency: agencies(:acme))
 
     assert_no_difference "User.count" do
       post user_registration_path, params: valid_params

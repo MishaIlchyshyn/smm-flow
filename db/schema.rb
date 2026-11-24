@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_11_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_24_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,18 +36,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_11_120000) do
     t.index ["agency_id"], name: "index_clients_on_agency_id"
   end
 
-  create_table "memberships", force: :cascade do |t|
-    t.bigint "agency_id", null: false
-    t.datetime "created_at", null: false
-    t.integer "role", default: 0, null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["agency_id", "user_id"], name: "index_memberships_on_agency_id_and_user_id", unique: true
-    t.index ["agency_id"], name: "index_memberships_on_agency_id"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "avatar_url"
     t.datetime "created_at", null: false
@@ -58,11 +46,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_11_120000) do
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.datetime "updated_at", null: false
+    t.bigint "agency_id", null: false
+    t.index ["agency_id"], name: "index_users_on_agency_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "clients", "agencies"
-  add_foreign_key "memberships", "agencies"
-  add_foreign_key "memberships", "users"
+  add_foreign_key "users", "agencies"
 end

@@ -135,7 +135,7 @@ That includes setup, RuboCop, security audits, Brakeman, Rails tests, and seed v
 
 ## Development Notes
 
-- New users sign up through a custom registration flow that also creates their first agency and owner membership.
+- New users sign up through a custom registration flow that also creates their agency (`users.agency_id`).
 - `bin/dev` uses Foreman and will install it automatically if it is missing.
 - No sample seed data is included yet in `db/seeds.rb`.
 

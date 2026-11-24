@@ -26,12 +26,12 @@ Use Ruby 3.1 hash shorthand when the key name matches the variable name:
 # correct
 find_by(agency:)
 { agency:, role: }
-Membership.new(user:, agency:, role: :owner)
+User.new(full_name:, email:, agency:)
 
 # incorrect
 find_by(agency: agency)
 { agency: agency, role: role }
-Membership.new(user: user, agency: agency, role: :owner)
+User.new(full_name: full_name, email: email, agency: agency)
 ```
 
 This applies everywhere: `find_by`, hash literals, method keyword arguments.
