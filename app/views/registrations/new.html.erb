@@ -10,9 +10,16 @@
 
         <div class="auth-fields">
           <div class="auth-field">
-            <%= f.label :full_name %>
-            <%= f.text_field :full_name,
-                placeholder: "Jane Smith",
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name,
+                placeholder: "Jane",
+                class: "auth-input" %>
+          </div>
+
+          <div class="auth-field">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name,
+                placeholder: "Smith",
                 class: "auth-input" %>
           </div>
 

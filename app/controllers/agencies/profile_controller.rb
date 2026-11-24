@@ -14,7 +14,7 @@ module Agencies
     private
 
     def user_params
-      params.require(:user).permit(:email, :full_name)
+      params.require(:user).permit(:email, :first_name, :last_name)
     end
   end
 end

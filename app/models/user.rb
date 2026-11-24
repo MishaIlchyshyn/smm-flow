@@ -4,15 +4,13 @@ class User < ApplicationRecord
 
   belongs_to :agency
 
-  validates :full_name, presence: true
+  validates :first_name, :last_name, presence: true
 
-  def avatar
-    avatar_url.presence || avatar_abbr
+  def full_name
+    [first_name, last_name].compact_blank.join(" ")
   end
 
-  private
-
-  def avatar_abbr
-    full_name.split.map { |w| w[0] }.first(2).join.upcase
+  def avatar
+    [first_name, last_name].compact_blank.map { |n| n[0] }.join.upcase
   end
 end

@@ -3,39 +3,25 @@
     <h4 class="form-title"><%= title %></h4>
   <% end %>
   <label class="fld">
-    <span>Owner Name <b class="req">*</b></span>
-    <%= f.text_field :owner_name, placeholder: "e.g. Jane Smith" %>
+    <span>Name <b class="req">*</b></span>
+    <%= f.text_field :name, placeholder: "e.g. Bloom Coffee" %>
   </label>
   <label class="fld">
-    <span>Business Name <b class="req">*</b></span>
-    <%= f.text_field :business_name, placeholder: "e.g. Bloom Coffee" %>
-  </label>
-  <label class="fld">
-    <span>Email <b class="req">*</b></span>
+    <span>Email</span>
     <%= f.email_field :email, placeholder: "name@example.com" %>
   </label>
   <label class="fld">
-    <span>Phone <b class="req">*</b></span>
-    <%= f.telephone_field :phone, placeholder: "+1 555 123 4567" %>
+    <span>Website URL</span>
+    <%= f.url_field :website_url, placeholder: "https://example.com" %>
   </label>
   <label class="fld">
-    <span>Instagram URL</span>
-    <%= f.url_field :instagram_url, placeholder: "https://instagram.com/username" %>
-  </label>
-  <label class="fld">
-    <span>Kind</span>
+    <span>Kind <b class="req">*</b></span>
     <%= f.select :kind,
           Client.kinds.keys.map { |k| [k.humanize, k] } %>
   </label>
   <label class="fld">
-    <span>Source</span>
-    <%= f.select :source,
-          Client.sources.keys.map { |s| [s.humanize, s] },
-          { include_blank: "Select source" } %>
-  </label>
-  <label class="fld">
-    <span>Source Detail</span>
-    <%= f.text_area :source_detail, placeholder: "e.g. Referred by Bloom Bakery" %>
+    <span>Notes</span>
+    <%= f.text_area :notes, placeholder: "e.g. Referred by Bloom Bakery" %>
   </label>
   <%= render "agencies/btns/save", f:, cancel: local_assigns[:cancel] %>
 <% end %>

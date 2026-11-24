@@ -9,8 +9,12 @@
     </button>
   </div>
   <label class="fld">
-    <span>Full Name</span>
-    <%= f.text_field :full_name %>
+    <span>First Name <b class="req">*</b></span>
+    <%= f.text_field :first_name %>
+  </label>
+  <label class="fld">
+    <span>Last Name <b class="req">*</b></span>
+    <%= f.text_field :last_name %>
   </label>
   <label class="fld">
     <span>Email</span>

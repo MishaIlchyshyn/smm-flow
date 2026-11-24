@@ -8,7 +8,7 @@ class Registration
 
   def call
     @user = User.new(@user_params)
-    @agency = @user.build_agency(name: "#{@user.full_name}'s agency")
+    @agency = @user.build_agency
     @success = @user.save
     self
   end

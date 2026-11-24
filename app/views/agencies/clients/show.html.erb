@@ -2,7 +2,7 @@
   <div class="breadcrumb">
     <%= link_to "Clients", clients_path %>
     <span class="sep">/</span>
-    <%= link_to @client.business_name, client_path(@client, tab: 'details') %>
+    <%= link_to @client.name, client_path(@client, tab: 'details') %>
     <span class="sep">/</span>
     <span class="cur" data-tabs-target="label"></span>
   </div>
@@ -22,11 +22,6 @@
 
     <div class="settings-body">
       <div data-tabs-target="panel">
-        <% if @client.converted_at %>
-          <p class="convert-note">
-            Customer since: <b><%= l(@client.converted_at, format: :display_slash) %></b>
-          </p>
-        <% end %>
         <%= render "form", client: @client %>
       </div>
     </div>
