@@ -4,3 +4,4 @@ en:
       display: "%-d %b %Y"
       display_slash: "%-d/%m/%Y"
       display_with_time: "%-d %b %Y, %-I:%M %p"
+      display_datetime: "%b %-d, %Y, %H:%M"

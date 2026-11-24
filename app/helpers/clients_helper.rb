@@ -1,11 +1,24 @@
 module ClientsHelper
-  KIND_STYLES = {
-    "lead"       => "color: var(--info); background: oklch(0.94 0.04 240)",
-    "customer"   => "color: var(--ok); background: oklch(0.94 0.05 155)",
-    "terminated" => "color: var(--bad); background: oklch(0.96 0.04 27)"
-  }.freeze
+  CLIENT_KINDS = %w[client lead].freeze
 
-  def kind_tag_style(kind)
-    KIND_STYLES[kind.to_s]
+  def kind_label(kind)
+    kind.to_s.humanize
+  end
+
+  def kind_badge(client)
+    tag.span(kind_label(client.kind), class: "kind-tag kind-tag--#{client.kind}")
+  end
+
+  def kind_options
+    CLIENT_KINDS.map { |kind| [kind_label(kind), kind] }
+  end
+
+  def website_label(url)
+    url.to_s.strip.sub(%r{\Ahttps?://}i, "").sub(/\Awww\./i, "").chomp("/")
+  end
+
+  def website_href(url)
+    url = url.to_s.strip
+    url.match?(%r{\A[a-z][a-z0-9+.-]*://}i) ? url : "https://#{url}"
   end
 end
