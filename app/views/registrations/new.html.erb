@@ -10,33 +10,33 @@
 
         <div class="auth-fields">
           <div class="auth-field">
-            <%= f.label :first_name %>
+            <%= f.label :first_name do %>First name <b class="req">*</b><% end %>
             <%= f.text_field :first_name,
                 placeholder: "Jane",
                 class: "auth-input" %>
           </div>
 
           <div class="auth-field">
-            <%= f.label :last_name %>
+            <%= f.label :last_name do %>Last name <b class="req">*</b><% end %>
             <%= f.text_field :last_name,
                 placeholder: "Smith",
                 class: "auth-input" %>
           </div>
 
           <div class="auth-field">
-            <%= f.label :email %>
+            <%= f.label :email do %>Email <b class="req">*</b><% end %>
             <%= f.email_field :email,
                 placeholder: "jone_smith@example.com",
                 class: "auth-input" %>
           </div>
 
           <div class="auth-field">
-            <%= f.label :password %>
+            <%= f.label :password do %>Password <b class="req">*</b><% end %>
             <%= f.password_field :password, class: "auth-input" %>
           </div>
 
           <div class="auth-field">
-            <%= f.label :password_confirmation %>
+            <%= f.label :password_confirmation do %>Password confirmation <b class="req">*</b><% end %>
             <%= f.password_field :password_confirmation, class: "auth-input" %>
           </div>
 
