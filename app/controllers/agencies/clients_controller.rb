@@ -46,7 +46,7 @@ module Agencies
 
     def client_params
       params.require(:client).permit(
-        :business_name, :owner_name, :email, :phone, :instagram_url, :source, :source_detail, :kind
+        :name, :email, :website_url, :notes, :kind
       )
     end
   end

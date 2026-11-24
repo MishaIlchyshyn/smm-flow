@@ -5,13 +5,15 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  full_name: Alice Smith
+  first_name: Alice
+  last_name: Smith
   email: alice@example.com
   agency: acme
   encrypted_password: $2a$04$7saYIIPWiFISxvJN.fRSMezDtoq7izl/jV54hjZ/6JAPyXuZ1rGz6
 
 two:
-  full_name: Bob Jones
+  first_name: Bob
+  last_name: Jones
   email: bob@example.com
   agency: acme
   encrypted_password: $2a$04$7saYIIPWiFISxvJN.fRSMezDtoq7izl/jV54hjZ/6JAPyXuZ1rGz6

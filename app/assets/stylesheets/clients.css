@@ -27,18 +27,7 @@
 }
 
 .client-grid {
-  grid-template-columns: 0.9fr 1.3fr 1.2fr 1.5fr 1.2fr 1fr 1.1fr;
-}
-
-.convert-note {
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  margin: 0 0 22px;
-}
-
-.convert-note b {
-  color: var(--ink);
-  font-weight: 700;
+  grid-template-columns: 0.9fr 1.4fr 1.6fr 1.6fr 1.1fr;
 }
 
 /* !important needed because .inner-tabs button sets a default color that wins on specificity */

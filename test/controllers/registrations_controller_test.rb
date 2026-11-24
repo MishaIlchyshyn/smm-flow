@@ -4,7 +4,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   def valid_params
     {
       user: {
-        full_name: "Test User",
+        first_name: "Test", last_name: "User",
         email: "newuser@example.com",
         password: "password123",
         password_confirmation: "password123"
@@ -17,7 +17,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
       post user_registration_path, params: valid_params
     end
 
-    assert_equal "Test User's agency", Agency.last.name
+    assert_equal Agency.last, User.last.agency
     assert_redirected_to clients_path
     follow_redirect!
     assert_response :success
@@ -35,7 +35,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "duplicate email re-renders registration form" do
-    User.create!(full_name: "Existing", email: "newuser@example.com", password: "password123", agency: agencies(:acme))
+    User.create!(first_name: "Existing", last_name: "Smith", email: "newuser@example.com", password: "password123", agency: agencies(:acme))
 
     assert_no_difference "User.count" do
       post user_registration_path, params: valid_params

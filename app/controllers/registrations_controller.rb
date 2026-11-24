@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if service.success?
       sign_in service.user
-      redirect_to clients_path, status: :see_other, notice: "Welcome to #{service.agency.name}!"
+      redirect_to clients_path, status: :see_other, notice: "Welcome!"
     else
       @user = service.user
       render :new, status: :unprocessable_entity
@@ -14,6 +14,6 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 end

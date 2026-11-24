@@ -3,7 +3,7 @@ require "test_helper"
 class RegistrationTest < ActiveSupport::TestCase
   def valid_user_params
     {
-      full_name: "Jane Doe",
+      first_name: "Jane", last_name: "Doe",
       email: "jane@example.com",
       password: "password123",
       password_confirmation: "password123"
@@ -19,34 +19,27 @@ class RegistrationTest < ActiveSupport::TestCase
     assert_equal service.agency, service.user.agency
   end
 
-  test "agency name is generated from user full name" do
-    service = Registration.new(user_params: valid_user_params).call
+  test "each registration gets its own agency" do
+    first = Registration.new(user_params: valid_user_params).call
+    second = Registration.new(user_params: valid_user_params.merge(email: "jane2@example.com")).call
 
-    assert_equal "Jane Doe's agency", service.agency.name
-  end
-
-  test "users with the same full name get separate agencies" do
-    Registration.new(user_params: valid_user_params).call
-    service = Registration.new(user_params: valid_user_params.merge(email: "jane2@example.com")).call
-
-    assert service.success?
-    assert_equal "Jane Doe's agency", service.agency.name
-    assert_equal 2, Agency.where(name: "Jane Doe's agency").count
+    assert second.success?
+    assert_not_equal first.agency, second.agency
   end
 
   test "exposes user and agency via readers after successful call" do
     service = Registration.new(user_params: valid_user_params).call
 
     assert_equal "jane@example.com", service.user.email
-    assert_equal "Jane Doe's agency", service.agency.name
+    assert_equal service.user.agency, service.agency
   end
 
   test "returns failure and rolls back all records when user is invalid" do
-    service = Registration.new(user_params: valid_user_params.merge(email: "not-an-email")).call
+    assert_no_difference ["User.count", "Agency.count"] do
+      service = Registration.new(user_params: valid_user_params.merge(email: "not-an-email")).call
 
-    assert_not service.success?
-    assert_equal 0, User.where(email: "not-an-email").count
-    assert_equal 0, Agency.where(name: "Jane Doe's agency").count
+      assert_not service.success?
+    end
   end
 
   test "returns user errors when user params are invalid" do
