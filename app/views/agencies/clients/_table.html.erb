@@ -1,25 +1,52 @@
 <div class="card table-card">
   <% if clients.any? %>
-    <div class="thead client-grid">
-      <span>Kind</span>
-      <span>Name</span>
-      <span>Email</span>
-      <span>Website</span>
-      <span>Created At</span>
+    <div class="table-scroll">
+      <table class="data-table client-table">
+        <colgroup>
+          <col>
+          <col class="col-kind">
+          <col class="col-email">
+          <col class="col-website">
+          <col class="col-created">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Kind</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% clients.each do |client| %>
+            <tr>
+              <td>
+                <%= link_to client.name, client_path(client),
+                      class: "text-link row-title", title: client.name, data: { turbo_frame: "_top" } %>
+              </td>
+              <td><%= kind_badge(client) %></td>
+              <td>
+                <% if client.email.present? %>
+                  <%= mail_to client.email, class: "text-link cell-link", title: client.email %>
+                <% else %>
+                  <span class="cell-empty">—</span>
+                <% end %>
+              </td>
+              <td>
+                <% if client.website_url.present? %>
+                  <%= link_to website_label(client.website_url), website_href(client.website_url),
+                        class: "text-link cell-link", title: client.website_url, target: "_blank", rel: "noopener" %>
+                <% else %>
+                  <span class="cell-empty">—</span>
+                <% end %>
+              </td>
+              <td><%= l(client.created_at, format: :display_datetime) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <% clients.each do |client| %>
-      <%= link_to client_path(client, tab: 'details'), class: "trow client-grid clickable", data: { turbo_frame: "_top" } do %>
-        <span>
-          <span class="kind-tag" style="<%= kind_tag_style(client.kind) %>">
-            <%= client.kind.humanize %>
-          </span>
-        </span>
-        <span><%= client.name %></span>
-        <span><%= client.email %></span>
-        <span><%= client.website_url %></span>
-        <span><%= l(client.created_at, format: :display) %></span>
-      <% end %>
-    <% end %>
   <% else %>
     <div class="empty-state">No clients yet. Add your first one!</div>
   <% end %>

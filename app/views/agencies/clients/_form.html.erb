@@ -1,27 +1,33 @@
-<%= form_with model: client, class: "form-grid" do |f| %>
+<%= form_with model: client, class: "form-grid client-form" do |f| %>
   <% if local_assigns[:title] %>
     <h4 class="form-title"><%= title %></h4>
   <% end %>
   <label class="fld">
     <span>Name <b class="req">*</b></span>
-    <%= f.text_field :name, placeholder: "e.g. Bloom Coffee" %>
+    <%= f.text_field :name, placeholder: "Harbour Bakery", required: true %>
+  </label>
+  <label class="fld">
+    <span>Kind</span>
+    <%= f.select :kind, kind_options %>
   </label>
   <label class="fld">
     <span>Email</span>
-    <%= f.email_field :email, placeholder: "name@example.com" %>
+    <%= f.email_field :email, placeholder: "info@example.com" %>
   </label>
   <label class="fld">
-    <span>Website URL</span>
-    <%= f.url_field :website_url, placeholder: "https://example.com" %>
-  </label>
-  <label class="fld">
-    <span>Kind <b class="req">*</b></span>
-    <%= f.select :kind,
-          Client.kinds.keys.map { |k| [k.humanize, k] } %>
+    <span>Website</span>
+    <%= f.text_field :website_url, placeholder: "harbourbakery.co.uk", inputmode: "url" %>
   </label>
   <label class="fld">
     <span>Notes</span>
-    <%= f.text_area :notes, placeholder: "e.g. Referred by Bloom Bakery" %>
+    <%= f.text_area :notes, rows: 5, placeholder: "Anything worth remembering about this client" %>
   </label>
-  <%= render "agencies/btns/save", f:, cancel: local_assigns[:cancel] %>
+  <div class="save-row save-row--end">
+    <% if local_assigns[:cancel_stimulus_action] %>
+      <button type="button" class="btn-ghost" data-action="<%= cancel_stimulus_action %>">Cancel</button>
+    <% else %>
+      <%= link_to "Cancel", clients_path, class: "btn-ghost" %>
+    <% end %>
+    <%= f.submit "Save", class: "btn-primary" %>
+  </div>
 <% end %>

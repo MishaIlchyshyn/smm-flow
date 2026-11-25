@@ -3,8 +3,7 @@ class Client < ApplicationRecord
 
   enum :kind, {
     lead: 0,
-    customer: 1,
-    terminated: 2
+    client: 1
   }
 
   scope :ordered, -> { order(created_at: :desc) }

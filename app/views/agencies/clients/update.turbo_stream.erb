@@ -1,1 +1,4 @@
+<% if @client.errors.empty? %>
+  <%= turbo_stream.replace "client_details", partial: "agencies/clients/details", locals: { client: @client } %>
+<% end %>
 <%= turbo_stream.append "toasts", partial: "shared/toast", locals: @toast_data %>

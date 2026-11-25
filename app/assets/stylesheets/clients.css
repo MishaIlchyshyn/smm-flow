@@ -4,6 +4,7 @@
   gap: 9px;
   font-size: 14px;
   margin-bottom: 20px;
+  min-width: 0;
 }
 
 .breadcrumb a {
@@ -11,10 +12,12 @@
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
+  transition: color 0.14s;
 }
 
 .breadcrumb a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: var(--violet);
 }
 
 .breadcrumb .sep {
@@ -24,39 +27,303 @@
 .breadcrumb .cur {
   color: var(--ink);
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.client-grid {
-  grid-template-columns: 0.9fr 1.4fr 1.6fr 1.6fr 1.1fr;
+/* ---------- Clients table ---------- */
+
+.table-scroll {
+  overflow-x: auto;
 }
 
-/* !important needed because .inner-tabs button sets a default color that wins on specificity */
-.tab-delete {
-  margin-left: auto;
-  align-self: center;
-  margin-bottom: 0 !important;
-  border: 1px solid oklch(0.85 0.05 27) !important;
-  border-radius: 9px;
-  padding: 7px !important;
-  color: var(--bad) !important;
-  background: var(--surface);
+.client-table {
+  min-width: 900px;
+}
+
+.client-table .col-kind {
+  width: 104px;
+}
+
+.client-table .col-email {
+  width: 25%;
+}
+
+.client-table .col-website {
+  width: 20%;
+}
+
+.client-table .col-created {
+  width: 197px;
+}
+
+.client-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.client-table .row-title {
   cursor: pointer;
+}
+
+.client-table .row-title:hover {
+  text-decoration: none;
+  color: var(--violet);
+}
+
+.client-table .cell-link {
+  color: var(--violet-ink);
+}
+
+.client-table .cell-link:hover {
+  text-decoration: none;
+  color: var(--violet);
+}
+
+.client-table .cell-empty {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.kind-tag {
+  display: inline-block;
+}
+
+.kind-tag--client {
+  color: var(--ok);
+  background: oklch(0.94 0.05 155);
+}
+
+.kind-tag--lead {
+  color: var(--ink-soft);
+  background: var(--line);
+}
+
+/* ---------- Client form ---------- */
+
+.form-grid.client-form {
+  grid-template-columns: 1fr;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.form-grid.client-form textarea {
+  min-height: auto;
+}
+
+.save-row--end {
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+/* ---------- Client show ---------- */
+
+.client-view-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.client-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.client-head .kind-tag {
+  flex: none;
+  margin-top: 4px;
+}
+
+.client-name {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.client-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.client-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.client-meta-item + .client-meta-item {
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
+}
+
+.client-meta-item svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--ink-faint);
+}
+
+.client-meta-item a:hover {
+  text-decoration: none;
+  color: var(--violet);
+}
+
+.client-meta-item a {
+  color: var(--violet-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.client-created {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.client-notes {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  background: var(--violet-soft-2);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.client-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.client-actions-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.client-delete-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.client-delete-confirm-msg b {
+  color: var(--ink);
+}
+
+.client-delete-confirm-form {
+  margin: 0;
+}
+
+.client-actions-btns[hidden],
+.client-delete-confirm[hidden] {
+  display: none;
+}
+
+.icon-btn {
+  position: relative;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  transition: background 0.14s, border-color 0.14s;
-  text-decoration: none;
+  padding: 0;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.14s, border-color 0.14s, color 0.14s;
 }
 
-.tab-delete svg {
+.icon-btn svg {
   width: 16px;
   height: 16px;
 }
 
-.tab-delete:hover {
-  background: oklch(0.96 0.04 27);
-  border-color: var(--bad) !important;
-  color: var(--bad) !important;
+.icon-btn:hover {
+  background: var(--violet-soft-2);
+  border-color: var(--violet);
+  color: var(--violet);
 }
+
+.icon-btn--danger:hover {
+  background: oklch(0.96 0.04 27);
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+.icon-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border-radius: 7px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.icon-btn[data-tooltip]:hover::after,
+.icon-btn[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+
+.btn-danger {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 11px;
+  background: var(--bad);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.14s, transform 0.05s;
+}
+
+.btn-danger:hover {
+  background: oklch(0.54 0.20 27);
+}
+
+.btn-danger:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Shared form grid ---------- */
 
 .form-grid {
   display: grid;

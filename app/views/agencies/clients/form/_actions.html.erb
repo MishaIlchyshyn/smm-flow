@@ -1,0 +1,24 @@
+<div class="client-actions">
+  <div class="client-actions-btns" data-client-details-target="actions">
+    <button type="button" class="icon-btn" aria-label="Edit" data-tooltip="Edit"
+            data-action="client-details#edit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+      </svg>
+    </button>
+    <button type="button" class="icon-btn icon-btn--danger" aria-label="Delete" data-tooltip="Delete"
+            data-action="client-details#askDelete">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 7h16M10 11v6M14 11v6M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="client-delete-confirm" data-client-details-target="confirm" hidden>
+    <span class="client-delete-confirm-msg">Delete <b><%= client.name %></b>? This can't be undone.</span>
+    <button type="button" class="btn-ghost" data-action="client-details#keep">Keep</button>
+    <%= button_to "Delete", client_path(client), method: :delete,
+          class: "btn-danger", form_class: "client-delete-confirm-form", data: { turbo_frame: "_top" } %>
+  </div>
+</div>
